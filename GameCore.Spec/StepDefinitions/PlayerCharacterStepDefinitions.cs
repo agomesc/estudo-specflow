@@ -12,43 +12,31 @@ namespace GameCore.Spec.StepDefinitions
         [Given(@"sou um novo jogador")]
         public void GivenImANewPlayer()
         {
-            player = new PlayerCharacter();
+            this.player = new PlayerCharacter();
         }
 
-        [When(@"tomou 0 de dano")]
-        public void Tomou0DeDano()
+        [When(@"tomou (.*) de dano")]
+        public void TomouDeDano(int damage)
         {
-            player.Hit(0);
-        }
-
-        [When(@"tomou 40 de dano")]
-        public void Tomou40deDano()
-        {
-            player.Hit(40);
+            this.player.Hit(damage);
         }
 
         [Then(@"Minha saúde agora deve ser 100")]
         public void MinhaSaudeAagoraDeveSer100()
         {
-            Assert.Equal(100, player.Health);
+            Assert.Equal(100, this.player.Health);
         }
 
         [Then(@"Minha saúde agora deve ser 60")]
         public void MinhasaudeAgoraDeveSer60()
         {
-            Assert.Equal(60, player.Health);
+            Assert.Equal(60, this.player.Health);
         }
 
-
-        [When(@"tomou 100 de dano")]
-        public void Tomou100Dedano()
-        {
-            player.Hit(100);
-        }
         [Then(@"eu deveria estar morto")]
         public void EuDeveriaEstarMorto()
         {
-            Assert.True(player.IsDead);
+            Assert.True(this.player.IsDead);
         }
     }
 }
