@@ -1,17 +1,12 @@
 ﻿Feature: PlayerCharacter
 
-Scenario: Não sofrer dano quando atingido não afeta a saúde
+Scenario Outline: Redução da Saúde
 	Given sou um novo jogador
-	When tomou 0 de dano
-	Then Minha saúde agora deve ser 100
+	When tomou <damage> de dano
+	Then Minha saúde agora deve ser <expectedHealth>
 
-Scenario: Saúde inicial é reduzida ao ser atingida
-	Given sou um novo jogador
-	When tomou 40 de dano
-	Then Minha saúde agora deve ser 60
-
-Scenario: sofrer muitos danos resulta na morte do jogador 
-	Given sou um novo jogador
-	When tomou 100 de dano
-	Then eu deveria estar morto
-
+Examples:
+	| damage | expectedHealth |
+	| 0      | 100            |
+	| 40     | 60             |
+	| 50     | 50             |

@@ -21,16 +21,10 @@ namespace GameCore.Spec.StepDefinitions
             this.player.Hit(damage);
         }
 
-        [Then(@"Minha saúde agora deve ser 100")]
-        public void MinhaSaudeAagoraDeveSer100()
+        [Then(@"Minha saúde agora deve ser (.*)")]
+        public void MinhaSaudeAagoraDeveSer(int health)
         {
-            Assert.Equal(100, this.player.Health);
-        }
-
-        [Then(@"Minha saúde agora deve ser 60")]
-        public void MinhasaudeAgoraDeveSer60()
-        {
-            Assert.Equal(60, this.player.Health);
+            Assert.Equal(health, this.player.Health);
         }
 
         [Then(@"eu deveria estar morto")]

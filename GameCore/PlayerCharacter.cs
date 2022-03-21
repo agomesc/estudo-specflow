@@ -12,10 +12,9 @@ namespace GameCore
 
         public string Race { get; set; }
 
-        public void Hit(int demage)
+        public void Hit(int damage)
         {
             int raceEspecificDamageResitance = 0;
-            int damage = 0;
 
             if (this.Race == "Elf")
             {
@@ -24,7 +23,7 @@ namespace GameCore
 
             var totalDamageTaken = Math.Max(damage - raceEspecificDamageResitance - this.DamageResistance, 0);
 
-            this.Health -= demage;
+            this.Health -= totalDamageTaken;
 
             if (this.Health <= 0)
             {
